@@ -1,0 +1,75 @@
+version: '2.4'
+# Advantech Jetson™ Qwen Langchain AI Agent Docker Compose file
+# Created and maintained by Samir Singh <samir.singh@advantech.com>
+# This Docker Compose file configures the Jetson™ Qwen Langchain AI Agent Development Container
+# with all necessary hardware acceleration settings.
+# Copyright (c) 2025 Advantech Corporation. All rights reserved.
+services:
+  langchain-agent-service:
+    image: harbor.edgesync.cloud/nagarro-container-images/qwen2.5-3b-ai-agent-on-nvidia-jetson:v1
+    container_name: Qwen2.5-3B-AI-Agent-on-NVIDIA-Jetson
+    network_mode: host
+    privileged: true
+    runtime: nvidia
+    env_file: .env
+    tty: true
+    stdin_open: true
+    entrypoint: ["/bin/bash"]
+    restart: always
+    labels:
+      maintainer: "Samir Singh <samir.singh@advantech.com>"
+      vendor: "Advantech"
+      version: "1.2"
+      description: "Jetson™ Qwen Langchain AI Agent Development Container"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all,compute,video,utility,graphics
+    volumes:
+      - ./langchain-agent-service:/workspace/langchain-agent-service/
+      - ./wise-bench.sh:/workspace/wise-bench.sh
+      - ollama-models:/root/.ollama
+      - /etc/nv_tegra_release:/etc/nv_tegra_release
+      - /usr/lib/aarch64-linux-gnu/tegra:/usr/lib/aarch64-linux-gnu/tegra
+      - /usr/src/jetson_multimedia_api:/usr/src/jetson_multimedia_api
+      - /usr/lib/aarch64-linux-gnu/gstreamer-1.0:/usr/lib/aarch64-linux-gnu/gstreamer-1.0
+      - /usr/local/cuda:/usr/local/cuda
+      # SUSI & Advantech Bind Mounts
+      - /etc/board:/etc/board:ro
+      - /lib/libSUSI-4.00.so:/lib/libSUSI-4.00.so:ro
+      - /lib/libSUSI-4.00.so.1:/lib/libSUSI-4.00.so.1:ro
+      - /lib/libSUSI-4.00.so.1.0.0:/lib/libSUSI-4.00.so.1.0.0:ro
+      - /lib/libSusiIoT.so:/lib/libSusiIoT.so:ro
+      - /lib/libSusiIoT.so.1.0.0:/lib/libSusiIoT.so.1.0.0:ro
+      - /usr/lib/Advantech/:/usr/lib/Advantech/:ro
+    devices:
+      - /dev/nvhost-ctrl
+      - /dev/nvhost-ctrl-gpu
+      - /dev/nvhost-prof-gpu
+      - /dev/nvmap
+      - /dev/nvhost-gpu
+      - /dev/nvhost-as-gpu
+      - /dev/nvhost-vic
+      - /dev/nvhost-msenc
+      - /dev/nvhost-nvdec
+      - /dev/nvhost-nvjpg
+      - /dev/nvgpu/igpu0
+
+  openweb-ui-service:
+    image: ghcr.io/open-webui/open-webui:0.6.5
+    container_name: openweb-ui-service
+    env_file: .env
+    network_mode: host
+    environment:
+      OPENAI_API_BASE_URL: ${OPENAI_API_LANGCHAIN_BASE}
+      PORT: ${OPENWEBUI_PORT}
+      ENABLE_TAGS_GENERATION: ${ENABLE_TAGS_GENERATION}
+      ENABLE_TITLE_GENERATION: ${ENABLE_TITLE_GENERATION}
+    volumes:
+      - open-webui:/app/backend/data
+    restart: always
+
+volumes:
+  open-webui:
+    driver: local
+  ollama-models:
+    driver: local
