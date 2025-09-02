@@ -166,7 +166,7 @@ Make sure you have SUSI installed before using AI Agent tools. Refer to the belo
 ### Installation
 ```
 # Clone the repository
-git clone https://github.com/Advantech-EdgeSync-Containers/Nagarro-Container-Project.git
+git clone https://github.com/Advantech-EdgeSync-Containers/Qwen2.5-3B-AI-Agent-on-NVIDIA-Jetson.git
 cd Qwen2.5-3B-AI-Agent-on-NVIDIA-Jetson
 
 # Make the build script executable
