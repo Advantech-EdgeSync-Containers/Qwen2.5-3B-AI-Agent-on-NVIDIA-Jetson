@@ -1,12 +1,44 @@
-version: '2.4'
-# Advantech Jetson™ Qwen Langchain AI Agent Docker Compose file
-# Created and maintained by Samir Singh <samir.singh@advantech.com>
-# This Docker Compose file configures the Jetson™ Qwen Langchain AI Agent Development Container
-# with all necessary hardware acceleration settings.
+# ==========================================================================
+# Jetson™ Qwen LangChain AI Agent Development Docker Compose File
+# ==========================================================================
+# Version:      1.5.0
+# Author:       Samir Singh <samir.singh@advantech.com> and Apoorv Saxena<apoorv.saxena@advantech.com>
+# Last Updated: October 03, 2025
+# 
+# Description:
+#   Multi-service configuration for Qwen2.5-3B AI Agent deployment on
+#   NVIDIA Jetson with LangChain framework, Ollama backend, and OpenWebUI.
+#
+# Key Features:
+#   • LangChain AI Agent Service:
+#       – Qwen2.5-3B model with LangChain orchestration framework
+#       – GPU-accelerated inference with Ollama backend
+#       – Full NVIDIA hardware acceleration (CUDA, TensorRT, NVENC/NVDEC)
+#       – Integrated WiseBench diagnostics tool
+#   
+#   • OpenWebUI Frontend Service:
+#       – Web-based chat interface with persistent storage
+#       – Connects to LangChain agent via OpenAI-compatible endpoint
+#       – Configurable port 
+#
+# Services:
+#   - langchain-agent-service: Qwen2.5-3B with LangChain + Ollama
+#   - openweb-ui-service: Web interface for AI agent interaction
+#
+# Terms and Conditions:
+#   1. Provided by Advantech Corporation "as is," without any express or implied
+#      warranties of merchantability or fitness for a particular purpose.
+#   2. In no event shall Advantech Corporation be liable for any direct, indirect,
+#      incidental, special, exemplary, or consequential damages arising from
+#      the use of this software.
+#   3. Redistribution and use in source and binary forms, with or without
+#      modification, are permitted provided this notice appears in all copies.
+#
 # Copyright (c) 2025 Advantech Corporation. All rights reserved.
+# ==========================================================================
 services:
   langchain-agent-service:
-    image: harbor.edgesync.cloud/nagarro-container-images/qwen2.5-3b-ai-agent-on-nvidia-jetson:v1
+    image: edgesync.azurecr.io/advantech/qwen-b-ai-agent-on-nvidia-jetson:1.5.0-Ubuntu20.04-ARM
     container_name: Qwen2.5-3B-AI-Agent-on-NVIDIA-Jetson
     network_mode: host
     privileged: true
