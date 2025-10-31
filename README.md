@@ -158,8 +158,11 @@ The following software components/packages are provided further inside the conta
 
 ## Before You Start
 Make sure you have SUSI installed before using AI Agent tools. Refer to the below link for SUSI installation.
-- [SUSI package](https://github.com/ADVANTECH-Corp/SUSI/tree/master/ReleasePackage/RISC/Standard/Linux/EPC/EPC-R7300/Ubuntu%2020.04/ARM64)
-- [SUSI installation](https://ess-wiki.advantech.com.tw/view/SUSI#Installation)
+- Navigate to the [SUSI Release Packages](https://github.com/ADVANTECH-Corp/SUSI/tree/master/ReleasePackage) and select the appropriate package based on your hardware:
+    Example:
+   For EPC-R7300 (ARM64, Ubuntu 20.04): `RISC/Standard/Linux/EPC/EPC-R7300/Ubuntu 20.04/ARM64` e.g [SUSI package](https://github.com/ADVANTECH-Corp/SUSI/tree/master/ReleasePackage/RISC/Standard/Linux/EPC/EPC-R7300/Ubuntu%2020.04/ARM64)
+-    After downloading the appropriate package for your device, follow the [SUSI installation guide](https://ess-wiki.advantech.com.tw/view/SUSI#Installation).
+
 
 ## Quick Start
 
