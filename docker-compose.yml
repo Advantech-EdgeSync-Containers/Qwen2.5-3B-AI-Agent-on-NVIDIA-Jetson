@@ -38,7 +38,7 @@
 # ==========================================================================
 services:
   langchain-agent-service:
-    image: edgesync.azurecr.io/advantech/qwen-b-ai-agent-on-nvidia-jetson:1.5.0-Ubuntu20.04-ARM
+    image: edgesync.azurecr.io/advantech/qwen-b-ai-agent-on-nvidia-jetson:1.6.0-Ubuntu22.04-ARM
     container_name: Qwen2.5-3B-AI-Agent-on-NVIDIA-Jetson
     network_mode: host
     privileged: true
@@ -85,6 +85,13 @@ services:
       - /dev/nvhost-nvdec
       - /dev/nvhost-nvjpg
       - /dev/nvgpu/igpu0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu, compute, utility, video, graphics]
+              count: all
 
   openweb-ui-service:
     image: ghcr.io/open-webui/open-webui:0.6.5
