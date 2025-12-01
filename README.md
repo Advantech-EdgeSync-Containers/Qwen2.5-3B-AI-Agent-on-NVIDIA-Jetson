@@ -17,6 +17,8 @@ The Qwen2.5 3B AI Agent on NVIDIA Jetson™ Image is a high-performance, modular
 | **cuDNN** | 8.6.0.166 |
 | **TensorRT** | 8.5.2.2 |
 | **OpenCV** | 4.5.4 |
+* CUDA , CuDNN , TensorRT , OpenCV versions Depends on JetPack version 5.x
+* Please refer to the [NVIDIA JetPack Documentation](https://developer.nvidia.com/embedded/jetpack) for more details on compatible versions.
 
 ## Key Features
 
