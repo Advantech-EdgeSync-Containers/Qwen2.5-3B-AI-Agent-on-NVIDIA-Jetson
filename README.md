@@ -218,7 +218,7 @@ Allow some time for the OpenWebUI and Qwen2.5 3B AI Agent on NVIDIA Jetson™ to
 # Verify AI Accelerator and Software Stack Inside Docker Container
 # Under /workspace, run this command
 # Provide executable rights
-chmod +x /wise-bench.sh
+chmod +x wise-bench.sh
 
 # To run Wise-bench
 ./wise-bench.sh
