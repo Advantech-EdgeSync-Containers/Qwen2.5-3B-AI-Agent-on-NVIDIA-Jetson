@@ -176,7 +176,6 @@ Make sure you have SUSI installed before using AI Agent tools. Refer to the belo
    For EPC-R7300 (ARM64, Ubuntu 20.04): `RISC/Standard/Linux/EPC/EPC-R7300/Ubuntu 20.04/ARM64` e.g [SUSI package](https://github.com/ADVANTECH-Corp/SUSI/tree/master/ReleasePackage/RISC/Standard/Linux/EPC/EPC-R7300/Ubuntu%2020.04/ARM64)
 -    After downloading the appropriate package for your device, follow the [SUSI installation guide](https://ess-wiki.advantech.com.tw/view/SUSI#Installation).
 
-## Before you start
 - Ensure the following components are installed on your host system:
   - **Docker** (v28.1.1 or compatible)
   - **Docker Compose** (v2.39.1 or compatible)
