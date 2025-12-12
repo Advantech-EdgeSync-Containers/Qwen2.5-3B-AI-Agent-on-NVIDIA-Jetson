@@ -11,4 +11,4 @@ transformers==4.38.2
 huggingface-hub==0.21.4
 pypdf==5.5.0
 faiss-cpu==1.8.0.post1
-advantech-edge==1.0.0
+advantech-edge==1.0.1
